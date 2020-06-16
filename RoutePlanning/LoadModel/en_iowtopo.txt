@@ -1,0 +1,122 @@
+A high resolution spherical grid topography of the Baltic Sea
+
+The data sets presented here provide a digitised topography of the Baltic
+Sea. Land heights and water depths have been calculated for two regular
+spherical grids from available data. Data set "iowtopo2" covers the whole
+Baltic Sea from 9° to 31° East and from 53°30’ to 66° North by (660 x 750)
+grid cells, see Fig. 1. The resolution is 2 minutes with respect to
+longitude, and 1 minute to latitude. This is approximately 1 nautical mile,
+or 2 km resp. The region of the Belt Sea from 9° to 15°10’ East and from
+53°30’ to 56°30’ North, see Fig 2, is comprised within data set "iowtopo1"
+with a twofold higher resolution (1 minute in longitude and 0.5 minutes in
+latitude corresponding to approx. 1 km). The data sets were published at
+the Baltic Sea Science Congress in Stockholm on 27. November 2001. A short
+description of the data compilation is available online:
+http://www.io-warnemuende.de/research/iowtopo_resampling.html
+
+The data specify a representative average of the water depth or the land
+height of each grid cell, counted by negative and positive values in
+meters. Some statistical parameters allow a rough estimate of the
+reliability of the data. (Please be aware that data are rather uncertain in
+regions where strong gradients of the bottom relief occur, esp. the
+northern parts of the Baltic. There is an urgent need of further bathymetry
+data to become available for the Baltic beyond 59° North.) Since a common
+average of land heights and water depths lead to rather unsatisfying
+results with respect to the gridded shoreline, a landmask is proposed in
+both data sets. The landmasks were derived from the global high resolution
+shorelines GSHHS (www.soest.hawaii.edu/wessel/gshhs/gshhs.html) and RANGS
+(www.io-warnemuende.de/homepages/rfeistel/index.html), and used to get a
+"naturally looking" composite topography (z_topo see below).
+
+Data are provided in two formats. NetCDF files (*.nc) are self-desribing
+binaries which may be visualised and processed by tools like for instance:
+
+     Ferret ferret.wrc.noaa.gov/Ferret/
+     Grads grads.iges.org/grads/
+     Matlab www.mathworks.de
+
+Alternatively rather big ascii files (*.dat) are given which start with two
+header lines and contain the following data:
+ xlon    – the geographic longitude of the grid cell centre
+ ylat    – the corresponding geographical latitude
+
+ z_topo  – land height/water depth, composite of z_water, z_land and the
+         proposed landmask
+
+ z_water – average of all water depths allocated from original data to
+         this grid cell
+
+ z_land  – average of land heights allocated to this grid cell from
+         edcdaac.usgs.gov/gtopo30/gtopo30.html data
+
+ z_min   – minimal value of the original data
+ z_max   – maximal value of the original data
+
+ z_stdev – standard deviation of original data from averages z_water/z_land
+
+ z_near  – datum lying nearest to the centre of this grid cell
+ d-near  – distance of above mentioned data point from centre of grid cell
+
+ n_wet   > 0 number of original water depths allocated to this grid cell
+         < 0 number of neighbours interpolated to fill this empty cell
+
+ n_dry   > 0 number of original land heights allocated to this cell
+         < 0 number of iterations to find neighbours for interpolation
+ landmask– proposed "naturally loking" landmask (land=0, water=1)
+
+ flag    –flag indicating a pure data average (0), or an
+         interpolated/masked land height (+1) or water depth (-1)
+
+Application of data and disclaimer of warranty
+
+These data sets are a piece of scientific work which relies on free
+interchange of scientific data. Therefore the data are available for
+scientific research only. The data must not be used for navigation. Any
+commercial use is prohibited. Any kind of warranty is excluded.
+
+Reference
+
+The application of the data has to be cited as scientific work by: 
+T. Seifert, F. Tauber, B. Kayser: 2001: "A high resolution spherical grid
+topography of the Baltic Sea - 2nd edition", Proceedings of the Baltic
+Sea Science Congress, Stockholm 25-29. November 2001, Poster #147. 
+Any contribution to a further improvement of the data is welcome, please
+contact torsten.seifert@io-warnemuende.de
+
+Download
+
+For use with Windows/DOS-PCs (packed by pkzip):
+
+ASCII-files: iowtopo.dat.zip (10 MB)
+NetCDF-files: iowtopo.nc.zip (8 MB)
+
+For use with UNIX/LINUX (packed by tar & gzip):
+
+ASCII-files: iowtopo.dat.tgz (10 MB)
+NetCDF-files: iowtopo.nc.tgz (8 MB)
+
+last update: 26.11.2001          Criticism, ideas, suggestions to this page
+                                      to: torsten.seifert@io-warnemuende.de
+
+last update: 31.01.2003  
+
+Blanked out segment of disturbed data off Norway ("land" +0.1m in iowtopo2). 
+IOW bathymetry of 1995 included to fill all water cells by data.
+All output data in netCDF and ascii files rounded equally to 0.1 m. 
+
+last update: 30.05.2007  
+
+In file iowtopo2_rev03 the depths z_topo and z_water have been changed in the
+area of the eastern Gotland Sea (18°30'-21°30'E, 56°30'-58°N) to avoid an
+artifitial steep bottom gradient at the north-eastern rim of the basin (only
+data from the GEOBALT chart, Gelumbauskaite et al. (1999), and from the
+MESODYN measurements, Reissmann (1999), are included in this area now).
+From now on the release is indicated in the file names (rev03 for current,
+rev02 for last version).
+
+last update: 16.01.2008
+
+By an error in the output filter wrongly formatted ascii data were provided for iowtopo2_rev03.dat. 
+This has been corrected by setting undefined z_water and z_land to zero.
+Note that the landmask is land=1 and water=0 since rev03.
+

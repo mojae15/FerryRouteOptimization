@@ -1,0 +1,1 @@
+This Directory is for loading the .h5 model into a .json object, using the "frugally-deep" library, from https://github.com/Dobiasd/frugally-deep

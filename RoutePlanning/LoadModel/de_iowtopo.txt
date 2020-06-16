@@ -1,0 +1,138 @@
+Eine hochaufgelöste Topografie der Ostsee auf sphärischem Gitter
+
+Die hier bereitgestellten Datensätze bieten in digitalisierter Form
+Informationen zur Topografie der Ostseeregion. Auf zwei regelmässigen
+Gittern in geografischen Koordinaten wurden Wassertiefen bzw. Landhöhen aus
+verfügbaren Datensätzen berechnet. Der Datensatz "iowtopo2" umfasst die
+gesamte Ostsee mit (660x750) Gitterzellen zwischen 9° und 31° Ost bzw.
+53°30' und 66° Nord, siehe Abbildung 1. Die Auflösung beträgt 2 Minuten
+bzgl. der geografischen Länge und 1 Minute bzgl. der Breite, das entspricht
+etwa 1 Seemeile bzw. 2 km. Für den Bereich der Beltsee von 9° bis 15°10'
+Ost und 53°30' bis 56°30' Nord, siehe Abbildung 2, liefert der Datensatz
+"iowtopo1" einen zweifach höher aufgelösten Datensatz, mit 1 Minute in der
+Länge und 0.5 Minuten in der Breite, das ist etwa 1 km. Die Datensätze
+werden auf der "Baltic Sea Science Congress" in Stockholm am 27. November
+2001 veröffentlicht. Eine kurze Beschreibung der Zusammenstellung der Daten
+ist online verfügbar unter:
+http://www.io-warnemuende.de/research/iowtopo_resampling.html
+
+Die Datensätze enthalten Wassertiefen bzw. Landhöhen, die negativ bzw.
+positiv gezählt in Metern, einen repräsentativen Mittelwert für die
+jeweilige Gitterzelle darstellen. Einige statistische Parameter erlauben
+die Abschätzung der Zuverlässigkeit der Daten. (Es wird darauf hingewiesen,
+das insbesondere im Bereich der nördlichen zentralen Ostsee, wo das
+Bodenrelief sehr stark gegliedert ist, noch grössere Unsicherheiten
+bestehen, weil unterschiedliche Datensätze hier teils erheblich
+differieren. Für alle Seegebiete nördlich von 59° Breite besteht noch ein
+dringender Bedarf an weiteren Datensätzen, um besser abgesicherte
+Wassertiefen berechnen zu können.) Da eine gemeinsame Verarbeitung der
+Land- und der Wasserwerte, auch unter Berücksichtigung der begrenzten
+Gitterauflösung, keinen befriedigenden Küstenverlauf ergibt, wird jeweils
+eine Landmaske vorgeschlagen, die mit Hilfe hochaufgelöster Küstenlinien
+für das entsprechende Datengitter erstellt worden ist, siehe GSHHS
+(www.soest.hawaii.edu/wessel/gshhs/gshhs.html) und RANGS
+(www.io-warnemuende.de/homepages/rfeistel/index.html).
+
+Die Daten werden in 2 Formaten bereitgestellt. Die netCDF Dateien (*.nc)
+sind selbstbeschreibend und können mit vielen Werkzeugen direkt
+visualisiert und verarbeitet werden, siehe z.B.:
+
+     Ferret ferret.wrc.noaa.gov/Ferret/
+     Grads  grads.iges.org/grads/
+     Matlab www.mathworks.de
+
+Ausserdem sind einfache ASCII-Dateien (*.dat) verfügbar, die nach 2
+Beschreibungszeilen am Dateianfang zeilenweise folgende Daten enthalten:
+
+ xlon    - die geografische Länge des Mittelpunktes der jeweiligen
+         Gitterzelle
+ ylat    - die entsprechende geografische Breite
+
+ z_topo  - Landhöhe/Wassertiefe aus z_water und z_land unter
+         Berücksichtigung der Landmaske (s. u.)
+ z_water - Mittelwert der nur auf Daten zur Wassertiefe beruht
+
+ z_land  - Mittelwert der Landhöhe, der aus
+         edcdaac.usgs.gov/gtopo30/gtopo30.html berechnet wurde
+
+ z_min   - minimaler Wert aus allen Daten, die dieser Gitterzelle
+         zugeordnet wurden
+
+ z_max   - maximaler Wert aus allen Daten, die dieser Gitterzelle
+         zugeordnet wurden
+ z_stdev - Standardabweichung der Originaldaten bzgl. z_water/z_land
+
+ z_near  - Wert des Datenpunktes, der am dichtesten am Mittelpunkt der
+         Gitterzelle liegt
+ d-near  - Abstand des o. g. Datenpunktes vom Mittelpunkt der Gitter
+         > 0 Anzahl der Wassertiefen, die dieser Gitterzelle zugeordnet
+ n_wet   wurden
+         < 0 Anzahl der direkten Nachbarwerte zur Interpolation von leeren
+         Gitterzellen
+         > 0 Anzahl der Landwerte, die dieser Gitterzelle zugeordnet
+ n_dry   wurden
+         < 0 Anzahl der Iterationen bis Nachbarwerte zur Interpolation
+         gefunden wurden
+ landmask- Vorschlag für eine Landmaske (Land=0, Wasser=1)
+
+ flag    - Zeiger für reine Datenwerte (0) bzw. interpolierte Landhöhen
+         (+1) oder Wassertiefen (-1)
+
+Verwendbarkeit der Daten und Garantieausschluss
+
+Die vorliegenden Datensätze sind das Ergebnis einer wissenschaftlichen
+Arbeit, die auf dem freien Austausch wissenschaftlicher Daten beruht. Daher
+sind die Daten für alle wissenschaftlichen Anwendungen frei verfügbar. Die
+Daten eignen sich nicht für Navigationszwecke. Eine kommerzielle Nutzung
+ist nicht gestattet und alle Garantieansprüche bzgl. der Daten sind
+ausgeschlossen.
+
+Referenz
+
+Die Anwendung der Daten ist im Sinne einer wissenschaftlichen
+Veröffentlichung zu zitieren als: T. Seifert, F. Tauber, B. Kayser: 2001:
+"A high resolution spherical grid topography of the Baltic Sea - 2nd edition",
+Proceedings of the Baltic Sea Science Congress, Stockholm 25-29. November 2001,
+Poster #147. 
+Jeder Beitrag zur Verbesserung der Daten ist willkommen. 
+Nachfragen bitte an: torsten.seifert@io-warnemuende.de
+
+Herunterladen der Daten 
+
+Für die Nutzung auf Windows/DOS-PCs (gepackt mit pkzip):
+
+ASCII-Dateien: iowtopo.dat.zip (10 MB)
+NetCDF-Dateien: iowtopo.nc.zip (8 MB)
+
+Für die Nutzung unter UNIX/LINUX (gepackt mit tar und gzip):
+
+ASCII-Dateien: iowtopo.dat.tgz (10 MB)
+NetCDF-Dateien: iowtopo.nc.tgz (8 MB)
+
+
+aktualisiert: 26.11.2001              Fragen und Anregungen zu dieser Seite
+                                      an: torsten.seifert@io-warnemuende.de
+
+aktualisiert: 31.01.2003  
+
+Segment mit gestoerten Daten vor Norwegen ausgeblendet (Land +0.1m in iowtopo2). 
+IOW Bathymetrie von 1995 einbezogen, um alle Wasserzellen mit Daten zu fuellen.
+All output data in netCDF and ascii files rounded equally to 0.1 m. 
+Alle Ausgabedaten in netCDF und ASCII Dateien gleichmaessig auf 0.1m gerundet.
+
+aktualisiert: 30.05.2007
+
+In der Datei iowtopo2_rev03 wurden die Tiefen z_topo und z_water im Bereich
+der östlichen Gotlandsee (18°30'-21°30'E, 56°30'-58°N) geändert, um eine
+künstlich steile Stufe am Nordostrand des Beckens zu vermeiden (in diesem
+Gebiet wurden nur noch die Daten aus der GEOBALT-Karte, Gelumbauskaite et al.
+(1999), und die Messungen aus dem MESODYN-Projekt, Reissmann (1999),
+einbezogen).
+Von jetzt an wird die Version der Daten im Dateinamen gekennzeichnet (rev03
+für diese und rev02 für die vorletzte Version).
+
+aktualisiert: 16.01.2008
+
+Durch einen Fehler im Ausgabefilter wurden falsch formatierte ASCII-Daten iowtopo2_rev03.dat bereitgestellt.
+Dieser Fehler ist behoben, undefinierte z_water und z_land sind jetzt Null.
+Bitte beachten, dass die Landmaske ab rev03 Land=1 und Wasser=0 gesetzt ist.
